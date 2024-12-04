@@ -83,13 +83,25 @@ a {
   color: black;
 }
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 200px);
-  gap: 16px;
+.docs {
+  padding: 80px;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.docs__container {
+  /* display: grid;
+  grid-template-columns: repeat(3, 200px); */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   padding: 16px;
+}
+
+.docs__item {
+  list-style: none;
 }
 
 .card {

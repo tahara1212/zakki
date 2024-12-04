@@ -21,16 +21,17 @@ export default function Home() {
     // idとメタデータを返す
     return {
       id,
+      title: matterResult.data.title || id,
       ...matterResult.data,
     };
   });
   return (
-    <div className={styles.page}>
-      <ul className='cards-container'>
-        {allDocsTitle.map(({ id }) => (
-          <li key={id}>
+    <div className='docs'>
+      <ul className='docs__container'>
+        {allDocsTitle.map(({ id, title }) => (
+          <li key={id} className='docs__item'>
             <Link href={`docs/${id}`}>
-              {id}
+              {title}
             </Link>
           </li>
         ))}
