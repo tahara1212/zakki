@@ -1,4 +1,9 @@
-## ComponentProps
+---
+title: "ComponentProps"
+category: "フロントエンドフレームワーク"
+---
+
+# ComponentProps
 
 Atomic Design でいう Atoms に相当するような汎用的なコンポーネントは、メンテナンスコストを抑えるべきです。
 以下のような限定的な Props を受け取る型はメンテナンスコストが高いです。

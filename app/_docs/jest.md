@@ -1,5 +1,6 @@
 ---
 title: "Jest の基礎"
+category: "テスト"
 ---
 
 # Jest の基礎

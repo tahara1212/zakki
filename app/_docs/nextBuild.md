@@ -1,5 +1,6 @@
 ---
 title: "Next.js のビルド成果物"
+category: "フロントエンドフレームワーク"
 ---
 
 ## .next
