@@ -1,7 +1,6 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
@@ -35,14 +34,15 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   z-index: 1000;
 }
 
 .modal {
   width: 80%;
   max-width: 960px;
-  min-height: 100px; /* 最小高さを設定 */
-  max-height: 90vh; /* 画面の高さに対して最大高さを設定 */
+  min-height: 100px; 
+  max-height: 90vh; 
   border: none;
   border-radius: 12px;
   background-color: white;
@@ -51,8 +51,8 @@ a {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* テキストが多い場合に上端から始める */
-  overflow-y: auto; /* 内容が多い場合にスクロールバーを表示 */
+  align-items: flex-start; 
+  overflow-y: auto; 
   font-weight: 500;
   color: #333;
 }
@@ -65,13 +65,13 @@ a {
   height: 48px;
   background-color: transparent;
   border: none;
-  border-radius: 15px; /* Circular shape */
+  border-radius: 15px; 
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  font-size: 24px; /* Adjust font size as needed */
+  font-size: 24px; 
 }
 
 .close-button:hover {
@@ -90,8 +90,6 @@ a {
 }
 
 .docs__container {
-  /* display: grid;
-  grid-template-columns: repeat(3, 200px); */
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
@@ -102,6 +100,7 @@ a {
 
 .docs__item {
   list-style: none;
+  color: #36454F;
 }
 
 .hr {
@@ -219,7 +218,6 @@ a {
 }
 
 .markdown code {
-  font-family: 'Courier New', monospace;
   font-size: 0.875rem;
   display: inline;
   background-color: #e5e7eb;
@@ -234,7 +232,8 @@ a {
 }
 
 .markdown pre {
-  background-color: #f3f4f6;
+  background-color: #2e2e2e;
+  color: #f8f8f2;
   border-radius: 0.25rem;
   padding: 1rem;
 }
@@ -271,7 +270,6 @@ a {
   padding-bottom: 0.125rem;
   vertical-align: middle;
   font-weight: 400;
-  font-family: 'Courier New', monospace;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 

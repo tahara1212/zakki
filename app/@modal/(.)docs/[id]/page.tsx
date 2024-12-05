@@ -3,21 +3,21 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ParsedUrlQuery } from 'querystring';
-
-interface Params extends ParsedUrlQuery {
-  id: string;
-}
-import Link from "next/link";
 import { Modal } from "./modal";
 
 interface ModalPageProps {
-  params: Params;
+  params: Promise<{ id: string }>;
 }
 
-const DetailPage = ({ params }: ModalPageProps) => {
-  const { id } = params;
+const DetailPage = async ({ params }: ModalPageProps) => {
+  const { id } = await params
   const filePath = path.join(process.cwd(), `app/_docs/${id}.md`);
+
+  // ファイルが存在しない場合のエラーハンドリング
+  if (!fs.existsSync(filePath)) {
+    throw new Error('File not found');
+  }
+
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { content } = matter(fileContents);
     return (
@@ -29,4 +29,4 @@ const DetailPage = ({ params }: ModalPageProps) => {
     );
   };
   
-  export default DetailPage;
+export default DetailPage;

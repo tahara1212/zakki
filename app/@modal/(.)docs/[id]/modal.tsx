@@ -12,6 +12,14 @@ export function Modal({ children }: { children: React.ReactNode }) {
     if (!dialogRef.current?.open) {
       dialogRef.current?.showModal();
     }
+
+    // body の overflow を hidden に設定
+    document.body.style.overflow = 'hidden';
+
+    // クリーンアップ関数で元に戻す
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, []);
 
   function onDismiss() {
