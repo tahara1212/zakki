@@ -1,17 +1,17 @@
 ---
-title: "Jest の基礎"
+title: "Jest / 基本的なマッチャー"
 category: "テスト"
 ---
 
 # Jest の基礎
 
-### `toBe`と**`toEqual`**
+### `toBe()`と**`toEqual()`**
 
-`toBe`は厳密等価比較であり、JavaScript の`===` と同様。
+`toB()`は厳密等価比較であり、JavaScript の`===` と同様。
 
 参照先までが完全に一致する場合に真と評価するため、プリミティブ値の比較に適している。
 
-`toEqual` はオブジェクトや配列の中身が等しいかをチェックする。
+`toEqual()` はオブジェクトや配列の中身が等しいかをチェックする。
 
 ```jsx
 // 配列の中身は等しいが、異なるインスタンスであるためこのテストは失敗する
@@ -25,7 +25,7 @@ const arr2 = [1, 2, 3]
 expect(arr1).toEqual(arr2)
 ```
 
-`toEqual`は値の深い比較を行うが、プリミティブ値の場合は直接比較が行われ、以下のテストは成功する。
+`toEqual()`は値の深い比較を行うが、プリミティブ値の場合は直接比較が行われ、以下のテストは成功する。
 
 ```jsx
 const a = "a"
@@ -35,11 +35,11 @@ expect(a).toEqual(b)
 
 ただし、厳密等価比較を明示的に行う意味でも、プリミティブ値の比較は`toBe` を使用すべきである。
 
-### `not`
+### `not()`
 
-値が異なることを示す場合は`not` を使用する。
+値が異なることを示す場合は`not()` を使用する。
 
-マッチャー関数に`not`を前置することで、そのマッチャーの逆の結果を期待するテストを書くことができる。
+マッチャー関数に`not()`を前置することで、そのマッチャーの逆の結果を期待するテストを書くことができる。
 
 ```jsx
 // aとbの内容は同じでも異なるオブジェクトであるため、このテストは成功する
@@ -139,11 +139,11 @@ test("arrayContaining", () => {
 
 ### 真偽値の検証
 
-### `toBeTruthy`
+### `toBeTruthy()`
 
 真である値に一致する。
 
-### `toBeFalsy`
+### `toBeFalsy()`
 
 偽である値に一致する。
 
@@ -161,11 +161,11 @@ it("偽の値の検証", () => {
 });
 ```
 
-### `toBeNull`
+### `toBeNull()`
 
 null であることを検証する。
 
-### `toBeUndefined`
+### `toBeUndefined()`
 
 undefined であることを検証する。
 
@@ -209,7 +209,7 @@ test("objectContaining", () => {
 
 ### 例外処理の検証
 
-### `toThrow`
+### `toThrow()`
 
 関数が実行された際に例外が投げられることをテストする。
 
@@ -236,7 +236,7 @@ expect(() => {
 }).toThrow(ErrorType);
 ```
 
- `toThrow`を使用する際は、関数が実行されることを確実にするためにラッパー関数を使用する。ラッパー関数を使用しない場合、関数が`expect`の呼び出し前に実行され、期待通りにテストが機能しない。
+ `toThrow()`を使用する際は、関数が実行されることを確実にするためにラッパー関数を使用する。ラッパー関数を使用しない場合、関数が`expect`の呼び出し前に実行され、期待通りにテストが機能しない。
 
 ```jsx
 // 正しくない書き方 
@@ -339,7 +339,7 @@ test("指定時間待つと、経過時間をもって rejectされる", async (
 
 ### 関数がどのように呼び出されたかを確認する
 
-### **`toHaveBeenCalledTimes`**
+### **`toHaveBeenCalledTimes()`**
 
 モック関数が特定の回数だけ呼び出されたことを確認するためのマッチャー。
 
@@ -358,7 +358,7 @@ mockFn();
 expect(mockFn).toHaveBeenCalledTimes(2);
 ```
 
-### **`toHaveBeenNthCalledWith`**
+### **`toHaveBeenNthCalledWith()`**
 
 モック関数が特定の呼び出し回数目にどの引数で呼び出されたかを確認するためのマッチャー。
 
@@ -378,7 +378,7 @@ mockFn('third call');
 expect(mockFn).toHaveBeenNthCalledWith(2, 'second call');
 ```
 
-### **`toHaveBeenCalledWith`**
+### **`toHaveBeenCalledWith()`**
 
 関数が特定の引数で呼び出されたことを確認したい場合に使用するマッチャー。
 
