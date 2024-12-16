@@ -3,15 +3,39 @@ title: "Jest / モックについて"
 category: "テスト"
 ---
 
-# モックについて
+## モックについて
+モック関数は、テスト中に関数の実装を置き換え、その呼び出しを追跡したり、特定の戻り値を返したりするための特別な関数です。  
+これにより、テスト対象のコードが他の部分に依存せずにテストできるようになります。  
+`jest.fn()`でモック関数を作成します。
+```
+const mockCallback = jest.fn();
+```
+### モック関数のプロパティ
+- mock.calls: モック関数が呼ばれた回数や引数を記録します。
+- mock.results: モック関数が返した結果を保存します。
+- mock.instances: モック関数がnewでインスタンス化された場合に、そのインスタンスを記録します。
+- mock.contexts: bindやcall、applyを使った際のthisの値を記録します。
 
-・定められた値を返却するもの
+呼び出し数の確認
+モック関数が呼ばれた回数を確認するには、以下のようにします。
+```
+expect(mockCallback.mock.calls.length).toBe(2); // 2回呼ばれたか確認
+```
+引数の確認
+各呼び出しの引数を確認することもできます。
+```
+expect(mockCallback.mock.calls[0][0]).toBe(0); // 最初の呼び出しの最初の引数が0か確認
+expect(mockCallback.mock.calls[1][0]).toBe(1); // 2回目の呼び出しの最初の引数が1か確認
+```
+### モック関数の戻り値
+モック関数は、`mockReturnValueOnce`メソッドや`mockReturnValue`メソッドを使用して、特定の値を返すように設定できます。
+```
+const myMock = jest.fn();
+myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
 
-・テスト対象に「入力」を与えるためのもの
-
-スタブは、テスト対象が依存しているコンポーネントに、何らかの不都合がある場合に使用します。例えば、 Web APIに依存しているテスト対象を検証するときです。「 Web APIからこんな値が返ってきた場合、このように動作する」というテストでスタブを使用します。テスト対象がスタブにアクセスすると、スタブは定められた値を返却します。
-
-![スクリーンショット 2024-10-15 10.23.56.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4fc61ac9-b4cf-4a6f-b4b2-c624a50e6c56/ca8c1728-5dc8-4b36-bcca-4d063739a480/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-10-15_10.23.56.png)
+console.log(myMock(), myMock(), myMock(), myMock());
+// > 10, 'x', true, true
+```
 
 ### スパイ
 
