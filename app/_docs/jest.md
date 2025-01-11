@@ -104,14 +104,24 @@ expect(a).not.toEqual(b);
 配列に特定のプリミティブが含まれているかを検証する。
 
 ### `toHaveLength()`
-
-配列の要素数を検証する
-
+配列の要素数を検証する。
 ```jsx
 const tags = ["Jest", "Storybook", "Playwright", "React", "Next. js"]; 
-test(" toContain", () => { 
-	expect( tags). toContain("Jest"); 
-	expect( tags). toHaveLength(5); 
+test("toContain", () => { 
+  expect(tags).toContain("Jest"); 
+  expect(tags).toHaveLength(5); 
+});
+```
+
+### `toHaveAttribute()`
+要素の属性をテストする。  
+例えば、テキスト入力要素がパスワードなのかどうかどうかは以下のように判定する。
+```
+test('パスワード非表示'である, () => {
+  render(
+    <TextInput />
+  );
+  expect(screen.getByTestId('input')).toHaveAttribute('type', 'password');
 });
 ```
 
