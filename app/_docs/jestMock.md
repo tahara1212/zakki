@@ -45,6 +45,12 @@ console.log(myMock(), myMock(), myMock(), myMock());
 // > 10, 'x', true, true
 ```
 
+#### mockRejectedValue()
+`mockRejectedValue()` は、モック関数が呼ばれた際に常に指定した値を使って Promise を拒否（reject）する。
+
+#### mockRejectedValueOnce()
+`mockRejectedValueOnce()` は、モック関数が次に呼び出されたときにだけ指定した値を使って Promise を拒否（reject）する。
+
 ### スパイ
 
 スパイの主な目的は「記録」を行うこと。
