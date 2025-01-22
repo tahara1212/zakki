@@ -81,3 +81,28 @@ it("初回表示から1秒後にトーストが非表示になる", () => {
 });
 ```
 `useFakeTimers()`を使用すると、非同期処理を簡単にテストできるようになるが、状態の更新が React のコールスタック外で発生する場合は注意が必要。
+
+## Jest におけるフェイクタイマー機能の主要なメソッド
+
+### `jest.useFakeTimers()`
+Jest のフェイクタイマーを有効にし、`setTimeout`、`setInterval`、および`Date`などのメソッドがモックされる。
+
+### `jest.advanceTimersByTime(ms)`
+フェイクタイマーが有効の時、指定したミリ秒数だけタイマーを進める。
+
+### `jest.runAllTimers()`
+全ての保留中のタイマーを一度に実行し、全ての`setTimeout`や`setInterval`が即座に完了する。
+
+### `jest.runOnlyPendingTimers()`
+その時点で保留中のタイマーを実行する。  
+`jest.runAllTimers()`を使用すると全てのタスクが即座に実行されるため、モジュールが`setTimeout`を使ってコールバック内で再帰的に別の`setTimeout`を使用する場合、無限ループが発生する可能性がある。  
+`jest.runOnlyPendingTimers()`は1ステップごとに状態を確認しながらタイマーを進める。
+
+### `jest.clearAllTimers()`
+全てのタイマーを削除する。すでに設定されたタイマー関数も無効化する。
+
+### `jest.getTimerCount()`
+保留中のタイマーの数を返す。フェイクタイマーがそれだけ残っているのかを確認する際に使用する。
+
+### `jest.useRealTimers()`
+Jest のフェイクタイマーを無効にし、元のタイマー実装を再び使用する。
