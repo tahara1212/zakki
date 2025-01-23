@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import styles from "./page.module.css";
 import Link from "next/link";
 
 // ドキュメントの型定義
@@ -9,7 +8,7 @@ interface Doc {
   id: string;
   title: string;
   category: string;
-  [key: string]: any; // その他のメタデータを許可するためのインデックスシグネチャ
+  [key: string]: string | undefined; // その他のメタデータを許可するためのインデックスシグネチャ
 }
 
 // カテゴリごとにグループ化したオブジェクトの型定義
@@ -20,7 +19,6 @@ interface Acc {
 export default function Home() {
   const docsData = path.join(process.cwd(), `app/_docs/`);
   const fileNames = fs.readdirSync(docsData);
-  console.log(fileNames)
   const allDocsData = fileNames.map((fileName) => {
     // .md拡張子を除去してidを取得
     const id = fileName.replace(/\.md$/, '');
