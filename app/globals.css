@@ -103,6 +103,11 @@ a {
   color: #36454F;
 }
 
+.playground {
+  margin: 180px;
+  text-align: center;
+}
+
 .hr {
   margin: 20px 0;
   height: 1px;

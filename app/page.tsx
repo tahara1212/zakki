@@ -48,22 +48,30 @@ export default function Home() {
   }, {});
 
   return (
-    <div className='docs'>
-      {Object.entries(groupedByCategory).map(([category, docs]) => (
-        <div key={category}>
-          <h2 className='docs__category'>{category}</h2>
-          <hr className='hr' />
-          <ul className='docs__container'>
-            {docs.map(({ id, title }) => (
-              <li key={id} className='docs__item'>
-                <Link href={`docs/${id}`}>
-                  {title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <main className='main'>
+      <div className='docs'>
+        {Object.entries(groupedByCategory).map(([category, docs]) => (
+          <div key={category}>
+            <h2 className='docs__category'>{category}</h2>
+            <hr className='hr' />
+            <ul className='docs__container'>
+              {docs.map(({ id, title }) => (
+                <li key={id} className='docs__item'>
+                  <Link href={`docs/${id}`}>
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className='playground'>
+        <Link href={`key?key=hoge`}>
+          Keyへ
+        </Link>
+      </div>
+    </main>
+
   );
 }
