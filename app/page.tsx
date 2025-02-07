@@ -66,11 +66,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <div className='playground'>
-        <Link href={`key?key=hoge`}>
-          Keyへ
-        </Link>
-      </div>
     </main>
 
   );
