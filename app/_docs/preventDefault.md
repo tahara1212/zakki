@@ -1,5 +1,5 @@
 ---
-title: "event.preventDefault()は何の為にやるのか"
+title: "event.preventDefault"
 category: "JavaScript"
 ---
 
